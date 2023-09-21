@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileZipper } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faFileZipper } from '@fortawesome/free-solid-svg-icons';
 
-import './ExampleComponent.css'
-import styles from './ExampleComponent.module.css'
+//import './ExampleComponent.css'
+//import styles from './ExampleComponent.module.css'
 
-import examplePhoto from './example_photo.jpg'
+//import examplePhoto from './example_photo.jpg'
 
 
 interface ExampleComponentProps
@@ -19,7 +19,7 @@ function ExampleComponent( props: ExampleComponentProps )
 {
     return (
         <table>
-            <thead className={ styles.tableHead }>
+            <thead /*{  className={ styles.tableHead  }*/> 
                 <tr>
                     <th>CSS File</th>
                     <th>CSS Module</th>
@@ -27,7 +27,7 @@ function ExampleComponent( props: ExampleComponentProps )
                     <th>Icon (SVG)</th>
                 </tr>
             </thead>
-            <tbody className={ styles.tableBody }>
+            <tbody /*className={ styles.tableBody }*/>
                 <tr>
                     <td>
                         <div className='css-file'>
@@ -35,15 +35,15 @@ function ExampleComponent( props: ExampleComponentProps )
                         </div>
                     </td>
                     <td>
-                        <button className={ styles.cssModuleButton } onClick={ () => props.callback( props.value + 1 ) }>
+                        <button /*className={ styles.cssModuleButton }*/ onClick={ () => props.callback( props.value + 1 ) }>
                             Inc++
                         </button>
                     </td>
                     <td>
-                        <img style={ { width: '4em' } } src={ examplePhoto } alt='' />
+                        { /* <img style={ { width: '4em' } } src={ examplePhoto } alt='' /> */ }
                     </td>
                     <td>
-                        <FontAwesomeIcon icon={ faFileZipper } fontSize={ '4em' } />
+                        { /* <FontAwesomeIcon icon={ faFileZipper } fontSize={ '4em' } /> */ }
                     </td>
                 </tr>
             </tbody>
