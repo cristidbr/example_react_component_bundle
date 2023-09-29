@@ -6,23 +6,23 @@ const TerserPlugin = require( 'terser-webpack-plugin' );
 const appDirectory = Path.resolve( __dirname, '../' );
 
 const babelLoaderConfiguration = {
-test: /\.js$|tsx?$/,
-    // Add every directory that needs to be compiled by Babel during the build.
-    include: [
-        Path.resolve( appDirectory, 'src/' ),
-        Path.resolve( appDirectory, 'public/' ),
-    ],
-    use: {
-    loader: 'babel-loader',
-    options: {
-        cacheDirectory: true,
-        presets: [
-            "@babel/preset-typescript",
-            "@babel/preset-react"
+    test: /\.js$|tsx?$/,
+        // Add every directory that needs to be compiled by Babel during the build.
+        include: [
+            Path.resolve( appDirectory, 'src/' ),
+            Path.resolve( appDirectory, 'public/' ),
         ],
-        plugins: [ ],
+        use: {
+        loader: 'babel-loader',
+        options: {
+            cacheDirectory: true,
+            presets: [
+                "@babel/preset-typescript",
+                "@babel/preset-react"
+            ],
+            plugins: [ ],
+        },
     },
-},
 };
 
 const svgLoaderConfiguration = {
