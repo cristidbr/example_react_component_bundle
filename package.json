@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "export": "npx webpack --config ./export/webpack.config.js"
+    "export": "npx webpack --config ./export/webpack.config.js --entry ./src/ExampleComponent.tsx --env output=ExampleComponent.production.min.js"
   },
   "eslintConfig": {
     "extends": [

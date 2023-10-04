@@ -3,11 +3,12 @@ const Path = require( 'path' );
 const Webpack = require( 'webpack' );
 const TerserPlugin = require( 'terser-webpack-plugin' );
 
+// this config should be stored in a subfolder 
 const appDirectory = Path.resolve( __dirname, '../' );
 
 const babelLoaderConfiguration = {
     test: /\.js$|tsx?$/,
-        // Add every directory that needs to be compiled by Babel during the build.
+        // add every directory that needs to be compiled by Babel during the build
         include: [
             Path.resolve( appDirectory, 'src/' ),
             Path.resolve( appDirectory, 'public/' ),
@@ -17,8 +18,8 @@ const babelLoaderConfiguration = {
         options: {
             cacheDirectory: true,
             presets: [
-                "@babel/preset-typescript",
-                "@babel/preset-react"
+                '@babel/preset-typescript',
+                '@babel/preset-react'
             ],
             plugins: [ ],
         },
@@ -54,51 +55,52 @@ const fontLoaderConfiguration = {
     type: 'asset/resource',
 };
 
-module.exports = {
-    mode: 'production',
-    entry: 
-    {
-        export: Path.resolve( appDirectory, 'src/ExampleComponent.tsx' ),
-    },
-    devtool: undefined,
-    output: {
-        path: Path.resolve( appDirectory, 'bundle' ),
-        publicPath: '/',
-        filename: 'ExampleComponent.production.min.js',
-        library: {
-            type: 'umd',
-        }
-    },
-    devServer: {
-        historyApiFallback: true,
-    },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js'],
-        alias: {}
-    },
-    externals: 
-    {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-    },
-    module: {
-        rules: [
-            babelLoaderConfiguration,
-            imageLoaderConfiguration,
-            svgLoaderConfiguration,
-            styleLoaderConfiguration,
-            fontLoaderConfiguration,
+module.exports = ( env ) => 
+{
+    console.log( env )
+    return {
+        mode: 'production',
+        devtool: undefined,
+        output: {
+            path: Path.resolve( appDirectory, 'bundle' ),
+            publicPath: '/',
+            filename: env.output || 'export.production.min.js',
+            library: 
+            {
+                type: 'umd',
+            }
+        },
+        devServer: {
+            historyApiFallback: true,
+        },
+        resolve: {
+            extensions: ['.tsx', '.ts', '.jsx', '.js'],
+            alias: {}
+        },
+        externals: 
+        {
+            'react': 'React',
+            'react-dom': 'ReactDOM',
+        },
+        module: {
+            rules: [
+                babelLoaderConfiguration,
+                imageLoaderConfiguration,
+                svgLoaderConfiguration,
+                styleLoaderConfiguration,
+                fontLoaderConfiguration,
+            ],
+        },
+        optimization: {
+            usedExports: true,
+            minimize: true,
+            minimizer: [ new TerserPlugin() ],
+            splitChunks: false,
+        },
+        plugins: [
+            new Webpack.optimize.LimitChunkCountPlugin({
+                maxChunks: 1,
+            }),
         ],
-    },
-    optimization: {
-        usedExports: true,
-        minimize: true,
-        minimizer: [ new TerserPlugin() ],
-        splitChunks: false,
-    },
-    plugins: [
-        new Webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 1,
-        }),
-    ],
-};
+    };
+}
