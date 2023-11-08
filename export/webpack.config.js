@@ -41,6 +41,8 @@ const imageLoaderConfiguration = {
         loader: 'url-loader',
         options: {
             name: '[name].[ext]',
+            // force images to be bundled in JS using Base64
+            limit: Infinity
         },
     },
 };
@@ -57,7 +59,6 @@ const fontLoaderConfiguration = {
 
 module.exports = ( env ) => 
 {
-    console.log( env )
     return {
         mode: 'production',
         devtool: undefined,

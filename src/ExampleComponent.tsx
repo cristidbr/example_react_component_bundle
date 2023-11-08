@@ -51,4 +51,4 @@ function ExampleComponent( props: ExampleComponentProps )
     )
 }
 
-export default ExampleComponent;
+export { ExampleComponent }
