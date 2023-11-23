@@ -1,7 +1,7 @@
 # How to bundle single file React components
 
 Support materials for the article 
-[Integrate React Component into traditional websites and apps](https://medium.com/@cristian.dbr/integrate-react-components-into-traditional-websites-and-apps-83535a835a3c)
+[Integrate React Components into traditional websites and apps](https://medium.com/@cristian.dbr/integrate-react-components-into-traditional-websites-and-apps-83535a835a3c)
 
 ## CLI Usage 
 
